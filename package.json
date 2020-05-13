@@ -1,0 +1,31 @@
+{
+  "name": "portfolio_manager_parser",
+  "version": "1.0.0",
+  "description": "parses utility data for entry into portfolio manager",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/annajmorton/portfolio_manager_parser.git"
+  },
+  "keywords": [
+    "utility",
+    "data",
+    "portfolio",
+    "manager"
+  ],
+  "author": "anna morton",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/annajmorton/portfolio_manager_parser/issues"
+  },
+  "homepage": "https://github.com/annajmorton/portfolio_manager_parser#readme",
+  "dependencies": {
+    "fast-xml-parser": "^3.16.0",
+    "he": "^1.2.0",
+    "request": "^2.88.2",
+    "xlsx": "^0.16.0"
+  }
+}
