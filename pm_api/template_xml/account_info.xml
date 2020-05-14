@@ -16,7 +16,7 @@
      <organization name="ACME Corporation">
           <primaryBusiness>Other</primaryBusiness>
           <otherBusinessDescription>other</otherBusinessDescription>
-          <energyStarPartner>false</energyStarPartner>
+          <energyStarPartner>true</energyStarPartner>
           <energyStarPartnerType>Service and Product Providers</energyStarPartnerType>
      </organization>
 </account>

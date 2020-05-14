@@ -26,6 +26,7 @@
     "fast-xml-parser": "^3.16.0",
     "he": "^1.2.0",
     "request": "^2.88.2",
+    "request-promise": "^4.2.5",
     "xlsx": "^0.16.0"
   }
 }

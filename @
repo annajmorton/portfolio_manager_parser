@@ -1,0 +1,15 @@
+var config = {
+    dev: {
+        pm_api_password:"mgs@f3OoOoha!",
+        pm_api_username:"mgsuperuser",
+        pm_api_email:"sa2030@mortongestalt.info",
+        pm_api_orgname:"morton_gestalt",
+        pm_api_email:"sa2030@mortongestalt.info",
+        pm_api_phone:"210-660-7367",
+        pm_api_firstname:"Morton",
+        pm_api_lastname:"Gestalt",
+    },
+    production: {}
+};
+
+module.exports = config;
