@@ -4,10 +4,6 @@
         <usage>1000</usage>
         <startDate>2010-03-15</startDate>
         <endDate>2010-04-14</endDate>
-        <demandTracking>
-            <demand>99</demand>
-            <demandCost>5859</demandCost>
-        </demandTracking>
-        <cost>50</cost>
+        <cost>70</cost>
     </meterConsumption>
 </meterData>

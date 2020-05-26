@@ -4,7 +4,6 @@
 // Copyright 2020 Morton Gestalt LLC
 'use strict';
 
-// [START gae_flex_quickstart]
 const rp = require('request-promise');
 const fs = require('fs');
 
@@ -19,12 +18,20 @@ var env = config[config.env];
 //resource info
 var meters = env.shared[0].properties[0].meters;
 var rmethod = 'POST';
-var inputxml = "pm_api/template_xml/electric_meter_fulldata.xml";
+
+//load consumption data
+var up_data = require('./lib/xlsx_import.js');
+console.log(up_data);
 
 
-var resource_url = '/meter/' + meters[0].id +'/consumptionData';
+// select meter to update
+var inputxml_elec = "pm_api/template_xml/electric_meter_fulldata.xml";
+var inputxml_other = "pm_api/template_xml/other_meter_fulldata.xml";
+var resource_url = '/meter/' + meters[1].id +'/consumptionData';
 
-fs.readFile(inputxml, 'utf8',function(err,data){
+
+// read template xml and update with meter data
+fs.readFile(inputxml_other, 'utf8',function(err,data){
     var jsonObj = PMp.xml2j(data);
     var j2x = PMp.j2xml();
 
@@ -50,8 +57,5 @@ fs.readFile(inputxml, 'utf8',function(err,data){
         .catch(function(err){
             console.log(err);
         });
-
-
-
 
 });
