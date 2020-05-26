@@ -13,20 +13,19 @@ var PM_parser = require('./lib/pm_Jxml_parser.js');
 var PMp = new PM_parser;
 var pm_url_base = config.dev.pm_api_uri;
 
+//var meter_id = '21177533';
+var meter_id = '21177534';
+var resource_url = '/share/meter/' + meter_id;
 
-
-//var jsonObj = PMp.xml2j(data);
-
-//var send_xml = j2x.parse(jsonObj);
-console.log(config.dev.pm_api_account_id);
-var rmethod = 'GET';
+var rmethod = 'POST';
 var request_options = {
     method: rmethod,
-    url: pm_url_base + "/account",
+    url: pm_url_base + resource_url,
     headers:{
         'Content-Type':'application/xml',
         'Authorization': 'Basic ' + Buffer.from(config.dev.pm_api_username + ':' + config.dev.pm_api_password).toString('base64')
-    }
+    },
+    body: "<sharingResponse><action>Accept</action><note>Your share request has been verified and accepted.</note></sharingResponse>"
 };
 
 rp(request_options)

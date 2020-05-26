@@ -13,19 +13,25 @@ var PM_parser = require('./lib/pm_Jxml_parser.js');
 var PMp = new PM_parser;
 var pm_url_base = config.dev.pm_api_uri;
 
+// env var
+var env = config[config.env];
 
-
-//var jsonObj = PMp.xml2j(data);
-
-//var send_xml = j2x.parse(jsonObj);
-console.log(config.dev.pm_api_account_id);
+//resource info
+var meters = env.shared[0].properties[0].meters;
 var rmethod = 'GET';
+var resource_url = '/meter/' + meters[0].id +'/consumptionData';
+
+
+//  edit json object   
+//    jsonObj['account']['username'] = config.dev.pm_api_username;
+
+
 var request_options = {
     method: rmethod,
-    url: pm_url_base + "/account",
+    url: pm_url_base + resource_url,
     headers:{
         'Content-Type':'application/xml',
-        'Authorization': 'Basic ' + Buffer.from(config.dev.pm_api_username + ':' + config.dev.pm_api_password).toString('base64')
+        'Authorization': 'Basic ' + Buffer.from(env.pm_api_username + ':' + env.pm_api_password).toString('base64')
     }
 };
 
@@ -36,7 +42,4 @@ rp(request_options)
     .catch(function(err){
         console.log(err);
     });
-
-
-
 

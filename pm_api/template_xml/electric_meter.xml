@@ -1,0 +1,10 @@
+<!-- meter id 21177533 -->
+<?xml version="1.0" encoding="UTF-8"?>
+<meter>
+    <type>Electric</type>
+    <name>Electric Main Meter</name>
+    <unitOfMeasure>kBtu (thousand Btu)</unitOfMeasure>
+    <metered>true</metered>
+    <firstBillDate>2010-01-01</firstBillDate>
+    <inUse>true</inUse>
+</meter>

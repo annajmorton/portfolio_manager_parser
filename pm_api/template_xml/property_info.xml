@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<property>
+    <name>Broadway School</name>
+    <primaryFunction>K-12 School</primaryFunction>
+    <address address1="12321 Main Street" city="Arlington" postalCode="22201" state="VA" country="US"/>
+    <yearBuilt>2000</yearBuilt>
+    <constructionStatus>Existing</constructionStatus>
+    <grossFloorArea temporary="false" units="Square Feet">
+        <value>10000</value>
+    </grossFloorArea>
+    <occupancyPercentage>80</occupancyPercentage>
+    <isFederalProperty>false</isFederalProperty>
+    <notes><![CDATA[Permit license > 5 years old.]]></notes>
+</property>

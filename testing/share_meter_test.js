@@ -13,20 +13,20 @@ var PM_parser = require('./lib/pm_Jxml_parser.js');
 var PMp = new PM_parser;
 var pm_url_base = config.dev.pm_api_uri;
 
+// resource specific
+//var meter_id = '21177533';
+var meter_id = '21177534';
+var resource_url = '/invite/account/' + config.dev.pm_api_account_id + '/meter/'+meter_id;
+var rmethod = 'POST'; 
 
-
-//var jsonObj = PMp.xml2j(data);
-
-//var send_xml = j2x.parse(jsonObj);
-console.log(config.dev.pm_api_account_id);
-var rmethod = 'GET';
 var request_options = {
     method: rmethod,
-    url: pm_url_base + "/account",
+    url: pm_url_base + resource_url,
     headers:{
         'Content-Type':'application/xml',
-        'Authorization': 'Basic ' + Buffer.from(config.dev.pm_api_username + ':' + config.dev.pm_api_password).toString('base64')
+        'Authorization': 'Basic ' + Buffer.from('acme_dx_user_1'+ ':' + 'PA$sw0r6').toString('base64')
     }
+   
 };
 
 rp(request_options)
@@ -36,7 +36,6 @@ rp(request_options)
     .catch(function(err){
         console.log(err);
     });
-
 
 
 

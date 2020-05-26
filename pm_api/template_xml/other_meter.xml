@@ -1,0 +1,11 @@
+<!-- meter id 21177534  -->
+<?xml version="1.0" encoding="UTF-8"?>
+<meter>
+    <type>Other (Energy)</type>
+    <name>Other</name>
+    <otherDescription>Combination Fuel Type</otherDescription>
+    <unitOfMeasure>kBtu (thousand Btu)</unitOfMeasure>
+    <metered>true</metered>
+    <firstBillDate>2010-01-01</firstBillDate>
+    <inUse>true</inUse>
+</meter>

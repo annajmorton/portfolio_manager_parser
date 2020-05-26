@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<building>
+    <name>8041- Richmond Road - Score 58</name>
+    <address address1="5300 Richmond Road" city="Bedford Heights" postalCode="44146" state="OH" country="US"/>
+    <constructionStatus>Existing</constructionStatus>
+    <primaryFunction>Refrigerated Warehouse</primaryFunction>
+    <yearBuilt>1992</yearBuilt>
+    <grossFloorArea units="Square Feet" temporary="false">
+       <value>856655</value>
+    </grossFloorArea>
+    <occupancyPercentage>70</occupancyPercentage>
+    <isFederalProperty>true</isFederalProperty>
+    <agency id="1"/>
+    <federalOwner>US</federalOwner>
+    <agencyDepartmentRegion>Region Test</agencyDepartmentRegion>
+    <federalCampus>Campus Test</federalCampus>
+    <notes><![CDATA[Permit license > 5 years old.]]></notes>
+</building>
