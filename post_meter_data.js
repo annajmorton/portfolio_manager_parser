@@ -3,59 +3,79 @@
 // live portfolio manager API
 // Copyright 2020 Morton Gestalt LLC
 'use strict';
-
 const rp = require('request-promise');
-const fs = require('fs');
 
 var config = require('./config.js');
 var PM_parser = require('./lib/pm_Jxml_parser.js');
 var PMp = new PM_parser;
-var pm_url_base = config.dev.pm_api_uri;
+var meter_fulldata = require('./lib/meter_fulldata_xml2json.js');
 
 // env var
 var env = config[config.env];
-
-//resource info
+var pm_url_base = config.dev.pm_api_uri;
 var meters = env.shared[0].properties[0].meters;
 var rmethod = 'POST';
 
 //load consumption data
 var up_data = require('./lib/xlsx_import.js');
-console.log(up_data);
+
+//load and process the data
+function postMeters2PM(data,pmid) {
+    console.log(data);
+    for(var i=0; i < pmid.length; i++){
+        var meter = pmid[i];
+        var meter_up_data = up_data.pull_data_by_util_id(meter.util_id);
+        var resource_url = '/meter/' + meter.pm_meter_id +'/consumptionData';
+        var formedJson = [];
+        
+        for(var j=0; j < meter_up_data.length; j++){
+            var stepJson = data.meterData.meterConsumption;
+            var data_step = meter_up_data[j];
+            stepJson.usage = data_step['Bill.qty'];
+            stepJson.cost = data_step.Amount;
+            stepJson.startDate = data_step.Amount;
+            stepJson.endDate = data_step.Amount;
+            if(stepJson.demandTracking.demand){
+                stepJson.demandTracking.demand = data_step.Demand;
+                stepJson.demandTracking.demandCost = 0;
+            }
+            formedJson.push(stepJson);
+        }
+        //tjsonObj['account']['username'] = ;
+
+        //var j2x = PMp.j2xml();
+        //var send_xml = j2x.parse(tjsonObj);
+
+        /*
+        var request_options = {
+            method: rmethod,
+            url: pm_url_base + resource_url,
+            headers:{
+                'Content-Type':'application/xml',
+                'Authorization': 'Basic ' + Buffer.from(env.pm_api_username + ':' + env.pm_api_password).toString('base64')
+            },
+            body: send_xml
+        };
+
+        rp(request_options)
+            .then(function(parsedBody){
+                console.log(parsedBody);
+            })
+            .catch(function(err){
+                console.log(err);
+            });
+
+    */
+    }
+    console.log(formedJson);
+}
+
+// run electric 
+var elec_pmid = up_data.pm_meter_ids_elec;
+meter_fulldata.elec
+    .then(function(data){
+        postMeters2PM(data,elec_pmid);
+    })
+    .catch(console.log);
 
 
-// select meter to update
-var inputxml_elec = "pm_api/template_xml/electric_meter_fulldata.xml";
-var inputxml_other = "pm_api/template_xml/other_meter_fulldata.xml";
-var resource_url = '/meter/' + meters[1].id +'/consumptionData';
-
-
-// read template xml and update with meter data
-fs.readFile(inputxml_other, 'utf8',function(err,data){
-    var jsonObj = PMp.xml2j(data);
-    var j2x = PMp.j2xml();
-
-    //  edit json object   
-//    jsonObj['account']['username'] = config.dev.pm_api_username;
-
-    var send_xml = j2x.parse(jsonObj);
-
-    var request_options = {
-        method: rmethod,
-        url: pm_url_base + resource_url,
-        headers:{
-            'Content-Type':'application/xml',
-            'Authorization': 'Basic ' + Buffer.from(env.pm_api_username + ':' + env.pm_api_password).toString('base64')
-        },
-        body: send_xml
-    };
-
-    rp(request_options)
-        .then(function(parsedBody){
-            console.log(parsedBody);
-        })
-        .catch(function(err){
-            console.log(err);
-        });
-
-});
