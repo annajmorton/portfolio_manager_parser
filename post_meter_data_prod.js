@@ -14,11 +14,11 @@ var meter_fulldata = require('./lib/meter_fulldata_xml2json.js');
 
 // env var
 var env = config[config.env];
-var pm_url_base = config.dev.pm_api_uri;
+var pm_url_base = config.production.pm_api_uri;
 var meters = env.shared[0].properties[0].meters;
 var rmethod = 'POST';
 var j2x = PMp.j2xml();
-
+console.log(pm_url_base)
 //load consumption data
 var up_data = require('./lib/xlsx_import.js');
 
@@ -96,5 +96,4 @@ meter_fulldata.elec
         postMeters2PM(data,elec_pmid);
     })
     .catch(console.log);
-
 
