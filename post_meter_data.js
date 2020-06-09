@@ -97,4 +97,9 @@ meter_fulldata.elec
     })
     .catch(console.log);
 
-
+var gas_pmid = up_data.pm_meter_ids_other;
+meter_fulldata.gas
+    .then(function(data){
+        postMeters2PM(data,gas_pmid);
+    })
+    .catch(console.log);

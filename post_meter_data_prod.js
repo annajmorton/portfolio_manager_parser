@@ -85,7 +85,6 @@ function postMeters2PM(data,pmid) {
             .catch(function(err){
                 console.log(err);
             });
-
     }
 }
 
@@ -97,3 +96,10 @@ meter_fulldata.elec
     })
     .catch(console.log);
 
+// run gas
+var gas_pmid = up_data.pm_meter_ids_gas;
+meter_fulldata.gas
+    .then(function(data){
+        postMeters2PM(data,gas_pmid);
+    })
+    .catch(console.log);
