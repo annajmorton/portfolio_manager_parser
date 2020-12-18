@@ -10,15 +10,15 @@ var config = require('./config.js');
 // env var
 var env = config[config.env];
 var pm_url_base = config.production.pm_api_uri;
+let propJson = require('./property.json');
 
 // meter id to delete
-var meter_ids = [79317534,79317535,79317536,79317483,79317482,79317526,79317468,79317525,79317472,79317474,79317473,79317469,82348974];
-
+var meter_ids = propJson.meters_other; 
 var rmethod = 'DELETE';
 
 meter_ids.forEach(function(meter_id){
     // resource
-    var resource_url = '/meter/' + meter_id + '/consumptionData'; 
+    var resource_url = '/meter/' + meter_id; 
 
 
     var request_options = {
